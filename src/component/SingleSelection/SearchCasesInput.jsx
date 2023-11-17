@@ -12,9 +12,9 @@ const SearchCasesInput = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleChange = (data) => {
-    data= [data]
+    data = [data]
     const seeMore = data[data.length - 1];
-    
+
     if (data.length > 0 && !seeMore?.id) {
       loadMoreCases();
       setIsMenuOpen(true);
@@ -26,7 +26,7 @@ const SearchCasesInput = (props) => {
   return (
     <AsyncSelect
       id="cases"
-      
+
       isClearable={true}
       isLoading={false}
       isSearchable={true}
