@@ -34,67 +34,67 @@ function Single() {
   }, [caseSearchValue]);
   const getCases = async (pages = page) => {
     // try {
-      dispatch({ type: "LOAD", payload: true });
-      const payload = {
-        searchKey: caseSearchValue,
-        limit: 10,
-        page: pages,
-        startDate: "",
-        endDate: "",
-        stage: "",
-        caseStatus: "A",
-        orderBy: "",
-      };
+    dispatch({ type: "LOAD", payload: true });
+    const payload = {
+      searchKey: caseSearchValue,
+      limit: 10,
+      page: pages,
+      startDate: "",
+      endDate: "",
+      stage: "",
+      caseStatus: "A",
+      orderBy: "",
+    };
 
-      const header = {
-        headers: {
-          'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcmFzYW50YUB0ZWNobm9leHBvbmVudC5jb20iLCJpYXQiOjE2OTk1OTczMzEsImV4cCI6MTY5OTY0MDUzMX0._ipQwXTBXAdlvwUBkmZwTymZ9zR-cVRTE0DoBZopWSzhHr5XXWBwM5MqYGXe5tIDQpQmBbAST8XRwbG3akK5Jw"
-        }
+    const header = {
+      headers: {
+        'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcmFzYW50YUB0ZWNobm9leHBvbmVudC5jb20iLCJpYXQiOjE2OTk1OTczMzEsImV4cCI6MTY5OTY0MDUzMX0._ipQwXTBXAdlvwUBkmZwTymZ9zR-cVRTE0DoBZopWSzhHr5XXWBwM5MqYGXe5tIDQpQmBbAST8XRwbG3akK5Jw"
       }
-      let res = await axios.post('https://ecstest.zls.app/core-extension/api/v2/controller/case/list', payload, header);
-      // const res = await response.json();
-      setPage(pages)
-      console.log(res)
-      if (res.data.status === 200) {
-        console.log("Inside")
-        if (res.data?.data?.length) {
-          console.log("Inside 1")
-          let cases = res.data.data.map((data, index) => {
-            console.log("Inside 1 map", index)
+    }
+    let res = await axios.post('https://ecstest.zls.app/core-extension/api/v2/controller/case/list', payload, header);
+    // const res = await response.json();
+    setPage(pages)
+    console.log(res)
+    if (res.data.status === 200) {
+      console.log("Inside")
+      if (res.data?.data?.length) {
+        console.log("Inside 1")
+        let cases = res.data.data.map((data, index) => {
+          console.log("Inside 1 map", index)
 
-            return {
-              id: data.caseId,
-              value: data.caseNumber,
-              tagValue: data.caseNumber,
-              label:
-                data.caseNumber +
-                " - " +
-                data?.client?.lastName +
-                ", " +
-                data?.client?.firstName +
-                " - "
-            };
-          });
-          console.log("Inside cases", cases)
-          let list = state.caseListForSelect;
-          if (pages === 1) {
-            list = cases
-          } else {
-            list.push(...cases);
-          }
-
-          const newData = list.filter((item) => item.label !== "See more");
-          res.data.total_item > list.length &&
-            newData.push({ label: "See more" });
-          dispatch({
-            type: "SETDATA",
-            payload: { name: "caseListForSelect", value: newData },
-          });
+          return {
+            id: data.caseId,
+            value: data.caseNumber,
+            tagValue: data.caseNumber,
+            label:
+              data.caseNumber +
+              " - " +
+              data?.client?.lastName +
+              ", " +
+              data?.client?.firstName +
+              " - "
+          };
+        });
+        console.log("Inside cases", cases)
+        let list = state.caseListForSelect;
+        if (pages === 1) {
+          list = cases
+        } else {
+          list.push(...cases);
         }
-        dispatch({ type: "LOAD", payload: false });
-      } else {
-        dispatch({ type: "LOAD", payload: false });
+
+        const newData = list.filter((item) => item.label !== "See more");
+        res.data.total_item > list.length &&
+          newData.push({ label: "See more" });
+        dispatch({
+          type: "SETDATA",
+          payload: { name: "caseListForSelect", value: newData },
+        });
       }
+      dispatch({ type: "LOAD", payload: false });
+    } else {
+      dispatch({ type: "LOAD", payload: false });
+    }
     // } catch (error) {
     //   // dispatch({ type: "LOAD", payload: false });
     // }
