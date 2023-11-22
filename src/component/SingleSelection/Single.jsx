@@ -7,7 +7,6 @@ const initState = {
   caseListForSelect: [],
   selectedCases: [],
 
-
   selectedPeople: '',
   selectedProfile: "",
 
