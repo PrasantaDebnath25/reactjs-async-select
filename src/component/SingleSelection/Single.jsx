@@ -28,6 +28,7 @@ function Single() {
       // }
     }, 500);
 
+    //Clean up updated
     return () => {
       clearTimeout(timeoutId);
     };
