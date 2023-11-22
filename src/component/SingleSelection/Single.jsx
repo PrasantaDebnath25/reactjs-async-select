@@ -16,10 +16,11 @@ function Single() {
   const [state, dispatch] = useReducer(Reducer, initState);
   const [page, setPage] = useState(1);
   const [caseSearchValue, setCaseSearchValue] = useState("");
+
   useEffect(() => {
     getCases(page);
-
   }, [page]);
+  
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       // if (caseSearchValue !== "") {
