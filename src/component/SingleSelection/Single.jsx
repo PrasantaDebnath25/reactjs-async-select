@@ -34,7 +34,6 @@ function Single() {
     };
   }, [caseSearchValue]);
   const getCases = async (pages = page) => {
-    // try {
     dispatch({ type: "LOAD", payload: true });
     const payload = {
       searchKey: caseSearchValue,
@@ -96,9 +95,6 @@ function Single() {
     } else {
       dispatch({ type: "LOAD", payload: false });
     }
-    // } catch (error) {
-    //   // dispatch({ type: "LOAD", payload: false });
-    // }
   };
 
 
