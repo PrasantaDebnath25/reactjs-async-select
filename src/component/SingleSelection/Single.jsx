@@ -51,7 +51,8 @@ function Single() {
         'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcmFzYW50YUB0ZWNobm9leHBvbmVudC5jb20iLCJpYXQiOjE2OTk1OTczMzEsImV4cCI6MTY5OTY0MDUzMX0._ipQwXTBXAdlvwUBkmZwTymZ9zR-cVRTE0DoBZopWSzhHr5XXWBwM5MqYGXe5tIDQpQmBbAST8XRwbG3akK5Jw"
       }
     }
-    let res = await axios.post('https://ecstest.zls.app/core-extension/api/v2/controller/case/list', payload, header);
+    //End point removed
+    let res = await axios.post('/core-extension/api/v2/controller/case/list', payload, header);
     // const res = await response.json();
     setPage(pages)
     console.log(res)
