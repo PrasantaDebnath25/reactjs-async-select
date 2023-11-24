@@ -53,7 +53,7 @@ function Multiple() {
     }
     //End point removed
     let res = await axios.post('/core-extension/api/v2/controller/case/list', payload, header);
-    // const res = await response.json();
+    // const res = await response.json(); 
     setPage(pages)
     console.log(res)
     if (res.data.status === 200) {
