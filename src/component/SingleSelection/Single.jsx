@@ -100,6 +100,7 @@ function Single() {
 
 
   console.log("state---", state)
+  
   const loadMoreCases = () => {
     console.log("loadMoreCases")
     setPage(page + 1);
