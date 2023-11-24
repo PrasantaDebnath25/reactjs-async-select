@@ -96,9 +96,6 @@ function Multiple() {
     } else {
       dispatch({ type: "LOAD", payload: false });
     }
-    // } catch (error) {
-    //   // dispatch({ type: "LOAD", payload: false });
-    // }
   };
 
 
